@@ -4,6 +4,6 @@ to monitoring the spread of the corona virus 19
 
 ## LIVE
 
-[-] Soon !!
+ + [x] https://flamboyant-brattain-c8274d.netlify.app/
 
 
