@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import Theme from '../../common/theme'
@@ -18,14 +19,15 @@ const StyledContainer = styled.div`
 `
 
 export default function Footer() {
+  const { t } = useTranslation()
   const location = useLocation()
   return (
     <StyledContainer>
       <ListMenu
         item={[
-          { text: 'Home', link: '/' },
-          { text: 'Provinces', link: '/provinces' },
-          { text: 'Global', link: '/global' },
+          { text: `${t('footer.home')}`, link: '/' },
+          { text: `${t('footer.provinces')}`, link: '/provinces' },
+          { text: `${t('footer.global')}`, link: '/global' },
         ]}
         activePath={location.pathname}
       />

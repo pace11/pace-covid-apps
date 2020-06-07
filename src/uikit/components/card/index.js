@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styled, { keyframes } from 'styled-components'
 import Theme from '../../common/theme'
 
@@ -79,12 +80,14 @@ const Content = styled.div`
  * @param {String <any>} props.number
  */
 export default function Card({ title, number }) {
+  const { t } = useTranslation()
+
   return (
     <Container>
       <Content>
         <small>{title}</small>
         <p>{number}</p>
-        <small>Orang</small>
+        <small>{t('home.person')}</small>
       </Content>
     </Container>
   )

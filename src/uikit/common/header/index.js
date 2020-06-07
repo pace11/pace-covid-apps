@@ -1,8 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import theme from '../theme'
+import IconUS from '../../../assets/icons/Us'
+import IconID from '../../../assets/icons/Id'
+import Checkbox from '../../components/checkbox-flag'
 
 const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   min-height: 8vh;
   position: fixed;
@@ -14,6 +20,23 @@ const Container = styled.div`
   z-index: 999;
 `
 
-export default function Header() {
-  return <Container></Container>
+export default function Header({ language, HandleChangeLanguage }) {
+  return (
+    <Container>
+      <Checkbox
+        value="en"
+        isSelected={language}
+        onClick={() => HandleChangeLanguage('en')}
+      >
+        <IconUS />
+      </Checkbox>
+      <Checkbox
+        value="id"
+        isSelected={language}
+        onClick={() => HandleChangeLanguage('id')}
+      >
+        <IconID />
+      </Checkbox>
+    </Container>
+  )
 }

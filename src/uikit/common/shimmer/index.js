@@ -29,7 +29,7 @@ const StyledDivShimmer = styled.div`
   background-color: ${theme.colors.shimmer_secondary};
   background-image: linear-gradient(
     125deg,
-    ${(props) =>
+    ${() =>
       `${theme.colors.gray5} 5%, ${theme.colors.white2} 100%, ${theme.colors.gray5} 30%`}
   );
   height: ${(props) => props.height};
@@ -44,20 +44,29 @@ const StyledWrapper = styled.div`
   width: auto;
 `
 
-function Shimmer({ number }) {
-  return (
-    <React.Fragment>
-      {[...Array(number).keys()].map((index) => (
-        <Section key={String(index)}>
-          <StyledWrapper>
-            <StyledDivShimmer height="1rem" width="80px" />
-            <StyledDivShimmer height="2rem" width="80px" />
-            <StyledDivShimmer height="1rem" width="80px" />
-          </StyledWrapper>
-        </Section>
-      ))}
-    </React.Fragment>
-  )
+function Shimmer({ variant, number }) {
+  switch (variant) {
+    case 'title':
+      return (
+        <StyledWrapper>
+          <StyledDivShimmer height="1.3rem" width="180px" />
+        </StyledWrapper>
+      )
+    default:
+      return (
+        <React.Fragment>
+          {[...Array(number).keys()].map((index) => (
+            <Section key={String(index)}>
+              <StyledWrapper>
+                <StyledDivShimmer height="1rem" width="80px" />
+                <StyledDivShimmer height="2rem" width="80px" />
+                <StyledDivShimmer height="1rem" width="80px" />
+              </StyledWrapper>
+            </Section>
+          ))}
+        </React.Fragment>
+      )
+  }
 }
 
 export default Shimmer

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import Footer from '../footer'
 import Header from '../header'
@@ -15,9 +16,20 @@ const RowContent = styled.div`
 `
 
 export default function Layout({ children }) {
+  const [language, setLanguage] = useState('id')
+  const { i18n } = useTranslation()
+
+  const HandleChangeLanguage = (e) => {
+    setLanguage(e)
+    i18n.changeLanguage(e)
+  }
+
   return (
     <StyledContainer>
-      <Header />
+      <Header
+        language={language}
+        HandleChangeLanguage={HandleChangeLanguage}
+      />
       <RowContent>{children}</RowContent>
       <Footer />
     </StyledContainer>

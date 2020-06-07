@@ -2,59 +2,45 @@ import React, { useEffect } from 'react'
 import { useStoreDispatch, useStoreState } from 'easy-peasy'
 import styled from 'styled-components'
 import Layout from '../../uikit/common/layout'
-import Card from '../../uikit/components/card'
-import Shimmer from '../../uikit/common/shimmer'
+import SectionIndonesia from './in-indonesia'
+import SectionGlobal from './in-global'
 
 const Container = styled.div`
   margin-top: 60px;
-`
-
-const ColLayout = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
+  margin-bottom: 40px;
 `
 
 export default function Home() {
   const dispatch = useStoreDispatch()
-  const { DataIndonesia: stateDataIndonesia } = useStoreState(
-    (globalState) => globalState,
-  )
-
-  const { initialState } = stateDataIndonesia
-  const { items } = initialState
+  const {
+    DataIndonesia: stateDataIndonesia,
+    DataGlobalDeath: stateDataGlobalDeath,
+    DataGlobalPositive: stateDataGlobalPositive,
+    DataGlobalRecover: stateDataGlobalRecover,
+  } = useStoreState((globalState) => globalState)
 
   useEffect(() => {
     dispatch.DataIndonesia.getDataIndonesia()
-  }, [dispatch.DataIndonesia])
+    dispatch.DataGlobalDeath.getDataGlobalDeath()
+    dispatch.DataGlobalPositive.getDataGlobalPositive()
+    dispatch.DataGlobalRecover.getDataGlobalRecover()
+  }, [
+    dispatch.DataIndonesia,
+    dispatch.DataGlobalDeath,
+    dispatch.DataGlobalPositive,
+    dispatch.DataGlobalRecover,
+  ])
 
   return (
     <Layout>
       <Container>
-        <ColLayout>
-          {initialState.loading ? (
-            <Shimmer number={4} />
-          ) : (
-            <React.Fragment>
-              <Card
-                title="Total Positif"
-                number={items && items[0].positif}
-              />
-              <Card
-                title="Total Sembuh"
-                number={items && items[0].sembuh}
-              />
-              <Card
-                title="Total Meninggal"
-                number={items && items[0].meninggal}
-              />
-              <Card
-                title="Total Dirawat"
-                number={items && items[0].dirawat}
-              />
-            </React.Fragment>
-          )}
-        </ColLayout>
+        <SectionIndonesia data={stateDataIndonesia} />
+        <br />
+        <SectionGlobal
+          death={stateDataGlobalDeath}
+          positive={stateDataGlobalPositive}
+          recover={stateDataGlobalRecover}
+        />
       </Container>
     </Layout>
   )

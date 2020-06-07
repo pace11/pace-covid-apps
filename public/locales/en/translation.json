@@ -1,0 +1,16 @@
+{   
+    "footer": {
+        "home": "Home",
+        "provinces": "Provinces",
+        "global": "Global"
+    },
+    "home":{
+        "covid_in_indonesia": "Covid 19 in Indonesia",
+        "covid_in_the_world": "Covid 19 in the World",
+        "positive": "Positive",
+        "recovered": "Recovered",
+        "death": "Death",
+        "treated": "Treated",
+        "person": "Person"
+    }
+}
