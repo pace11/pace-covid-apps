@@ -1,5 +1,5 @@
-import GetDataIndonesia from './get-data-indonesia'
+import DataIndonesia from './get-data-indonesia'
 
 export default {
-  GetDataIndonesia,
+  DataIndonesia,
 }

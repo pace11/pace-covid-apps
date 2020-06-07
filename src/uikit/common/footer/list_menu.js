@@ -10,11 +10,15 @@ const WrapperList = styled(Link)`
   justify-content: center;
   cursor: pointer;
   box-shadow: ${(props) =>
-    props.currentPath ? `inset 0 -3px 0 ${Theme.colors.red}` : ''};
-  background: ${(props) => (props.currentPath ? '#ffebef' : 'none')};
+    props.currentpath === 'Y'
+      ? `inset 0 -3px 0 ${Theme.colors.red}`
+      : ''};
+  background: ${(props) =>
+    props.currentpath === 'Y' ? '#ffebef' : 'none'};
   color: ${(props) =>
-    props.currentPath ? Theme.colors.red : Theme.colors.gray};
-  font-weight: ${(props) => (props.currentPath ? 'bold' : 'none')};
+    props.currentpath === 'Y' ? Theme.colors.red : Theme.colors.gray};
+  font-weight: ${(props) =>
+    props.currentpath === 'Y' ? 'bold' : 'none'};
   :active {
     color: ${Theme.colors.red};
   }
@@ -28,7 +32,7 @@ export default function ListMenu({ item, activePath }) {
         item.map((item, i) => (
           <WrapperList
             key={String(i)}
-            currentPath={item.link === activePath ? true : false}
+            currentpath={item.link === activePath ? 'Y' : 'T'}
             to={`${item.link}`}
           >
             {item.text}

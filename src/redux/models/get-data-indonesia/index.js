@@ -2,7 +2,7 @@ import { action, thunk } from 'easy-peasy'
 import Endpoint from '../../../const/endpoint'
 import Axios from 'axios'
 
-const GetDataIndonesia = {
+const DataIndonesia = {
   initialState: {
     loading: true,
     error: false,
@@ -21,11 +21,14 @@ const GetDataIndonesia = {
     state.initialState.errorMessage = payload
   }),
 
-  getGetDataIndonesia: thunk(async (actions, payload) => {
+  getDataIndonesia: thunk(async (actions, payload) => {
     try {
       const config = {
         method: 'get',
-        url: `${Endpoint.API_GET_INDONESIA}`,
+        url: `https://cors-anywhere.herokuapp.com/${Endpoint.API_GET_INDONESIA}`,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
       }
       let response = await Axios(config)
       actions.fetchAction(response.data)
@@ -35,4 +38,4 @@ const GetDataIndonesia = {
   }),
 }
 
-export default GetDataIndonesia
+export default DataIndonesia

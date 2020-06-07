@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Footer from '../footer'
+import Header from '../header'
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -10,19 +11,15 @@ const StyledContainer = styled.div`
 const RowContent = styled.div`
   height: 92vh;
   overflow: hidden scroll;
-`
-
-const RowFooter = styled.div`
-  height: 8vh;
+  padding: 10px;
 `
 
 export default function Layout({ children }) {
   return (
     <StyledContainer>
+      <Header />
       <RowContent>{children}</RowContent>
-      <RowFooter>
-        <Footer />
-      </RowFooter>
+      <Footer />
     </StyledContainer>
   )
 }

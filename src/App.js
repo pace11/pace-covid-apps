@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { StoreProvider } from 'easy-peasy'
+import store from './redux/store'
 import WrapperBody from './Styled-Body'
 import SplashScreen from './splash-screen'
 import RouterWeb from './router.web'
@@ -14,7 +16,9 @@ export default function App() {
 
   return (
     <WrapperBody>
-      {loading ? <SplashScreen /> : <RouterWeb />}
+      <StoreProvider store={store}>
+        {loading ? <SplashScreen /> : <RouterWeb />}
+      </StoreProvider>
     </WrapperBody>
   )
 }
