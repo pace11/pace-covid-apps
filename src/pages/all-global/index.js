@@ -38,6 +38,7 @@ export default function AllProvinces() {
             {items &&
               items.map((item, i) => (
                 <ListMenuDropdown
+                  key={String(i)}
                   index={(i += 1)}
                   name={item.attributes.Country_Region}
                   positive={item.attributes.Confirmed}

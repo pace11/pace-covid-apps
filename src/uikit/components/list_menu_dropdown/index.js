@@ -100,9 +100,10 @@ export default function ListMenuDropdown({
   const { t } = useTranslation()
   const [show, setShow] = useState(false)
 
-  useEffect((index) => {
+  useEffect(() => {
     if (index === 1) setShow((show) => !show)
-  }, [])
+  }, [index])
+
   return (
     <React.Fragment>
       <ListContainer
