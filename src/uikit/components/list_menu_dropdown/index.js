@@ -23,7 +23,6 @@ const ListContainer = styled.li`
     background: ${Theme.colors.gradientRed};
   }
   margin-bottom: 10px;
-  user-select: none;
   cursor: pointer;
 `
 
@@ -48,6 +47,7 @@ const RowTitle = styled.div`
     top: 5px;
     z-index: -1;
   }
+  user-select: none;
 `
 
 const AnimationShow = keyframes`
@@ -106,11 +106,10 @@ export default function ListMenuDropdown({
 
   return (
     <React.Fragment>
-      <ListContainer
-        number={index}
-        onClick={() => setShow((show) => !show)}
-      >
-        <RowTitle>{name}</RowTitle>
+      <ListContainer number={index}>
+        <RowTitle onClick={() => setShow((show) => !show)}>
+          {name}
+        </RowTitle>
       </ListContainer>
       {show && (
         <RowContent>
