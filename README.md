@@ -6,6 +6,7 @@ to monitoring the spread of the corona virus 19
 
 ## FEATURE
  - [x] Progressive Web Apps Support
+ - [x] Multilanguage (indonesia, english)
  - [x] Redux with Easy Peasy
  - [x] Styled Component
  - [x] API Service from [Kawal Corona](https://kawalcorona.com/)
