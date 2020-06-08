@@ -12,5 +12,11 @@
         "death": "Total Meninggal",
         "treated": "Total Dirawat",
         "person": "Orang"
+    },
+    "list": {
+        "positive": "Total Positif",
+        "recovered": "Total Sembuh",
+        "death": "Total Meninggal",
+        "person": "{{ value }} Orang"
     }
 }

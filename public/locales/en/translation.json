@@ -12,5 +12,11 @@
         "death": "Death",
         "treated": "Treated",
         "person": "Person"
+    },
+    "list": {
+        "positive": "Positive",
+        "recovered": "Recovered",
+        "death": "Death",
+        "person": "{{ value }} Person"
     }
 }

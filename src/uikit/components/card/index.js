@@ -44,7 +44,7 @@ const Container = styled.div`
 `
 
 const AnimationZoom = keyframes`
-from {
+  from {
     transform: scale(0.5);
   }
   to {

@@ -9,6 +9,7 @@ const Section = styled.div`
   padding: 10px;
   border-radius: 10px;
   box-sizing: border-box;
+  margin-bottom: ${(props) => props.marginBottom || '0px'};
 `
 
 const shimmerAnimation = keyframes`
@@ -36,12 +37,17 @@ const StyledDivShimmer = styled.div`
   width: ${(props) => props.width};
   background-size: 50rem 10rem;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: ${(props) => props.borderRadius || '5px'};
 `
 
 const StyledWrapper = styled.div`
   height: auto;
   width: auto;
+`
+
+const StyledWrapperGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 10fr;
 `
 
 function Shimmer({ variant, number }) {
@@ -51,6 +57,23 @@ function Shimmer({ variant, number }) {
         <StyledWrapper>
           <StyledDivShimmer height="1.3rem" width="180px" />
         </StyledWrapper>
+      )
+    case 'list':
+      return (
+        <React.Fragment>
+          {[...Array(number).keys()].map((index) => (
+            <Section key={String(index)} marginBottom="10px">
+              <StyledWrapperGrid>
+                <StyledDivShimmer
+                  height="1.3rem"
+                  width="1.3rem"
+                  borderRadius="50%"
+                />
+                <StyledDivShimmer height="1.3rem" width="100%" />
+              </StyledWrapperGrid>
+            </Section>
+          ))}
+        </React.Fragment>
       )
     default:
       return (
