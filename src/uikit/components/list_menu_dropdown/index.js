@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled, { keyframes } from 'styled-components'
+import utils from '../../../helper/utils'
 import Theme from '../../common/theme'
 import theme from '../../common/theme'
 
@@ -24,6 +25,13 @@ const ListContainer = styled.li`
   }
   margin-bottom: 10px;
   cursor: pointer;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
 `
 
 const RowTitle = styled.div`
@@ -47,7 +55,13 @@ const RowTitle = styled.div`
     top: 5px;
     z-index: -1;
   }
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `
 
 const AnimationShow = keyframes`
@@ -90,6 +104,14 @@ const RowContent = styled.div`
   }
 `
 
+/**
+ *
+ * @param {Number} props.index
+ * @param {String} props.name
+ * @param {Number} props.recovered
+ * @param {Number} props.positive
+ * @param {Number} props.death
+ */
 export default function ListMenuDropdown({
   index,
   name,
@@ -113,18 +135,30 @@ export default function ListMenuDropdown({
       </ListContainer>
       {show && (
         <RowContent>
-          <div>
-            <span>{t('list.positive')}</span>
-            <span>{t('list.person', { value: positive })}</span>
-          </div>
-          <div>
-            <span>{t('list.recovered')}</span>
-            <span>{t('list.person', { value: recovered })}</span>
-          </div>
-          <div>
-            <span>{t('list.death')}</span>
-            <span>{t('list.person', { value: death })}</span>
-          </div>
+          {positive && (
+            <div>
+              <span>{t('list.positive')}</span>
+              <span>
+                {t('list.person', { value: utils.digit(positive) })}
+              </span>
+            </div>
+          )}
+          {recovered && (
+            <div>
+              <span>{t('list.recovered')}</span>
+              <span>
+                {t('list.person', { value: utils.digit(recovered) })}
+              </span>
+            </div>
+          )}
+          {death && (
+            <div>
+              <span>{t('list.death')}</span>
+              <span>
+                {t('list.person', { value: utils.digit(death) })}
+              </span>
+            </div>
+          )}
         </RowContent>
       )}
     </React.Fragment>

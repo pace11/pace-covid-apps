@@ -35,6 +35,18 @@ const WrapperLogo = styled.div`
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
 `
 
+const Copyright = styled.div`
+  text-align: center;
+  p {
+    font-size: 14px;
+    text-decoration: underline;
+    margin: 0;
+  }
+  small {
+    color: ${Theme.colors.white};
+  }
+`
+
 export default function SplashScreen() {
   return (
     <Container>
@@ -43,6 +55,10 @@ export default function SplashScreen() {
         <img src={LogoGaruda} alt={LogoGaruda} />
       </WrapperLogo>
       <Loader />
+      <Copyright>
+        <p>by @ryanpace11</p>
+        <small>App version 1.0.0</small>
+      </Copyright>
     </Container>
   )
 }

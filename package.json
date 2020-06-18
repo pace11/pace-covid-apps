@@ -15,12 +15,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.4.0",
+    "react-lazy-load-image-component": "^1.4.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4210 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
