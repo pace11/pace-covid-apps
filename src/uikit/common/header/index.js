@@ -20,6 +20,11 @@ const Container = styled.div`
   z-index: 999;
 `
 
+/**
+ *
+ * @param {String <any>} props.language
+ * @param {Function} props.HandleChangeLanguage
+ */
 export default function Header({ language, HandleChangeLanguage }) {
   return (
     <Container>

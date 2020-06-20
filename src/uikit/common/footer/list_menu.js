@@ -23,8 +23,17 @@ const WrapperList = styled(Link)`
     color: ${Theme.colors.red};
   }
   font-size: 14px;
+  p {
+    margin: 0;
+    text-align: center;
+  }
 `
 
+/**
+ *
+ * @param {String <any>} props.item
+ * @param {String <any>} props.activePath
+ */
 export default function ListMenu({ item, activePath }) {
   return (
     <React.Fragment>
@@ -35,7 +44,7 @@ export default function ListMenu({ item, activePath }) {
             currentpath={item.link === activePath ? 'Y' : 'T'}
             to={`${item.link}`}
           >
-            {item.text}
+            <p>{item.text}</p>
           </WrapperList>
         ))}
     </React.Fragment>

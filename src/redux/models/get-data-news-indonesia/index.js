@@ -2,7 +2,7 @@ import { action, thunk } from 'easy-peasy'
 import Endpoint from '../../../const/endpoint'
 import Axios from 'axios'
 
-const DataGlobalPositive = {
+const DataNewsIndonesia = {
   initialState: {
     loading: true,
     error: false,
@@ -21,11 +21,11 @@ const DataGlobalPositive = {
     state.initialState.errorMessage = payload
   }),
 
-  getDataGlobalPositive: thunk(async (actions, payload) => {
+  getDataNewsIndonesia: thunk(async (actions, payload) => {
     try {
       const config = {
         method: 'get',
-        url: `https://cors-anywhere.herokuapp.com/${Endpoint.API_GET_GLOBAL_POSITIVE}`,
+        url: `https://cors-anywhere.herokuapp.com/${Endpoint.API_GET_NEWS_INDONESIA}`,
         headers: {
           'Access-Control-Allow-Origin': '*',
         },
@@ -38,4 +38,4 @@ const DataGlobalPositive = {
   }),
 }
 
-export default DataGlobalPositive
+export default DataNewsIndonesia

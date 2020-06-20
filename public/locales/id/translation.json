@@ -2,7 +2,8 @@
     "footer": {
         "home": "Beranda",
         "provinces": "Provinsi",
-        "global": "Seluruh Dunia"
+        "global": "Seluruh Dunia",
+        "news": "Berita"
     },
     "home":{
         "covid_in_indonesia": "Covid 19 di Indonesia",
@@ -11,7 +12,10 @@
         "recovered": "Total Sembuh",
         "death": "Total Meninggal",
         "treated": "Total Dirawat",
-        "person": "Orang"
+        "person": "Orang",
+        "news": "Berita",
+        "see_all": "Lihat Semua",
+        "by": "oleh: "
     },
     "list": {
         "positive": "Total Positif",

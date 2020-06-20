@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Layout from '../../uikit/common/layout'
 import SectionIndonesia from './in-indonesia'
 import SectionGlobal from './in-global'
+import SectionNews from './news'
 
 const Container = styled.div`
   margin-top: 60px;
@@ -14,6 +15,7 @@ export default function Home() {
   const dispatch = useStoreDispatch()
   const {
     DataIndonesia: stateDataIndonesia,
+    DataNewsIndonesia: stateDataNewsIndonesia,
     DataGlobalDeath: stateDataGlobalDeath,
     DataGlobalPositive: stateDataGlobalPositive,
     DataGlobalRecover: stateDataGlobalRecover,
@@ -21,11 +23,13 @@ export default function Home() {
 
   useEffect(() => {
     dispatch.DataIndonesia.getDataIndonesia()
+    dispatch.DataNewsIndonesia.getDataNewsIndonesia()
     dispatch.DataGlobalDeath.getDataGlobalDeath()
     dispatch.DataGlobalPositive.getDataGlobalPositive()
     dispatch.DataGlobalRecover.getDataGlobalRecover()
   }, [
     dispatch.DataIndonesia,
+    dispatch.DataNewsIndonesia,
     dispatch.DataGlobalDeath,
     dispatch.DataGlobalPositive,
     dispatch.DataGlobalRecover,
@@ -35,12 +39,12 @@ export default function Home() {
     <Layout>
       <Container>
         <SectionIndonesia data={stateDataIndonesia} />
-        <br />
         <SectionGlobal
           death={stateDataGlobalDeath}
           positive={stateDataGlobalPositive}
           recover={stateDataGlobalRecover}
         />
+        <SectionNews data={stateDataNewsIndonesia} />
       </Container>
     </Layout>
   )

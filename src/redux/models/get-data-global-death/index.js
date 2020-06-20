@@ -25,7 +25,7 @@ const DataGlobalDeath = {
     try {
       const config = {
         method: 'get',
-        url: `https://cors-anywhere.herokuapp.com/${Endpoint.AP_GET_GLOBAL_DEATH}`,
+        url: `https://cors-anywhere.herokuapp.com/${Endpoint.API_GET_GLOBAL_DEATH}`,
         headers: {
           'Access-Control-Allow-Origin': '*',
         },

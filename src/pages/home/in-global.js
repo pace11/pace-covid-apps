@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import Section from '../../uikit/common/section'
 import styled from 'styled-components'
 import Card from '../../uikit/components/card'
 import Shimmer from '../../uikit/common/shimmer'
@@ -10,6 +11,12 @@ const ColLayout = styled.div`
   grid-gap: 10px;
 `
 
+/**
+ *
+ * @param {String <any>} props.death
+ * @param {String <any>} props.positive
+ * @param {String <any>} props.recover
+ */
 export default function InGlobal({ death, positive, recover }) {
   const { t } = useTranslation()
   const { initialState: stateDeath } = death
@@ -19,46 +26,37 @@ export default function InGlobal({ death, positive, recover }) {
   return (
     <React.Fragment>
       {stateDeath.loading ? (
-        <Shimmer variant="title" />
+        <Shimmer variant="card" number={3} />
       ) : (
-        <h3>{t('home.covid_in_the_world')}</h3>
+        <Section title={t('home.covid_in_the_world')}>
+          <ColLayout>
+            <Card
+              title={t('home.positive')}
+              number={
+                statePositive &&
+                statePositive.items &&
+                statePositive.items.value
+              }
+            />
+            <Card
+              title={t('home.recovered')}
+              number={
+                stateRecover &&
+                stateRecover.items &&
+                stateRecover.items.value
+              }
+            />
+            <Card
+              title={t('home.death')}
+              number={
+                stateDeath &&
+                stateDeath.items &&
+                stateDeath.items.value
+              }
+            />
+          </ColLayout>
+        </Section>
       )}
-      <ColLayout>
-        {statePositive.loading ? (
-          <Shimmer number={1} />
-        ) : (
-          <Card
-            title={t('home.positive')}
-            number={
-              statePositive &&
-              statePositive.items &&
-              statePositive.items.value
-            }
-          />
-        )}
-        {stateRecover.loading ? (
-          <Shimmer number={1} />
-        ) : (
-          <Card
-            title={t('home.recovered')}
-            number={
-              stateRecover &&
-              stateRecover.items &&
-              stateRecover.items.value
-            }
-          />
-        )}
-        {stateDeath.loading ? (
-          <Shimmer number={1} />
-        ) : (
-          <Card
-            title={t('home.death')}
-            number={
-              stateDeath && stateDeath.items && stateDeath.items.value
-            }
-          />
-        )}
-      </ColLayout>
     </React.Fragment>
   )
 }

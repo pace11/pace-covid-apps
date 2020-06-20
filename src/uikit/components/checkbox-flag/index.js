@@ -16,7 +16,19 @@ const ContainerRadio = styled.div`
   margin: 10px;
 `
 
-function TypeA({ children, value, isSelected, onClick }) {
+/**
+ *
+ * @param {String <any>} props.value
+ * @param {String <any>} props.isSelected
+ * @param {Function} props.onClick
+ * @param {String <any>} props.children
+ */
+export default function CheckboxFlag({
+  children,
+  value,
+  isSelected,
+  onClick,
+}) {
   return (
     <ContainerRadio
       isSelected={isSelected === value ? true : false}
@@ -27,5 +39,3 @@ function TypeA({ children, value, isSelected, onClick }) {
     </ContainerRadio>
   )
 }
-
-export default TypeA

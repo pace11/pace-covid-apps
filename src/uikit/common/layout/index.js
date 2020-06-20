@@ -15,6 +15,10 @@ const RowContent = styled.div`
   padding: 10px;
 `
 
+/**
+ *
+ * @param {String <any>} props.children
+ */
 export default function Layout({ children }) {
   const [language, setLanguage] = useState('id')
   const { i18n } = useTranslation()

@@ -2,7 +2,8 @@
     "footer": {
         "home": "Home",
         "provinces": "Provinces",
-        "global": "Global"
+        "global": "Global",
+        "news": "News"
     },
     "home":{
         "covid_in_indonesia": "Covid 19 in Indonesia",
@@ -11,7 +12,10 @@
         "recovered": "Recovered",
         "death": "Death",
         "treated": "Treated",
-        "person": "Person"
+        "person": "Person",
+        "news": "News",
+        "see_all": "See All",
+        "by": "by: "
     },
     "list": {
         "positive": "Positive",

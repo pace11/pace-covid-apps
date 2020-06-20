@@ -25,7 +25,7 @@ const DataGlobalRecover = {
     try {
       const config = {
         method: 'get',
-        url: `https://cors-anywhere.herokuapp.com/${Endpoint.AP_GET_GLOBAL_RECOVER}`,
+        url: `https://cors-anywhere.herokuapp.com/${Endpoint.API_GET_GLOBAL_RECOVER}`,
         headers: {
           'Access-Control-Allow-Origin': '*',
         },

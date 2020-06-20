@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import Section from '../../uikit/common/section'
 import styled from 'styled-components'
 import Card from '../../uikit/components/card'
 import Shimmer from '../../uikit/common/shimmer'
@@ -10,6 +11,10 @@ const ColLayout = styled.div`
   grid-gap: 10px;
 `
 
+/**
+ *
+ * @param {Object[Array]} props.data
+ */
 export default function InIndonesia({ data }) {
   const { t } = useTranslation()
   const { initialState } = data
@@ -18,15 +23,9 @@ export default function InIndonesia({ data }) {
   return (
     <React.Fragment>
       {initialState.loading ? (
-        <React.Fragment>
-          <Shimmer variant="title" />
-          <ColLayout>
-            <Shimmer number={4} />
-          </ColLayout>
-        </React.Fragment>
+        <Shimmer variant="card" number={4} />
       ) : (
-        <React.Fragment>
-          <h3>{t('home.covid_in_indonesia')}</h3>
+        <Section title={t('home.covid_in_indonesia')}>
           <ColLayout>
             <Card
               title={t('home.positive')}
@@ -45,7 +44,7 @@ export default function InIndonesia({ data }) {
               number={items && items[0].dirawat}
             />
           </ColLayout>
-        </React.Fragment>
+        </Section>
       )}
     </React.Fragment>
   )
