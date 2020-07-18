@@ -6,6 +6,7 @@
         "news": "Berita"
     },
     "home":{
+        "covid_in_provinces": "Covid 19 semua provinsi di Indonesia",
         "covid_in_indonesia": "Covid 19 di Indonesia",
         "covid_in_the_world": "Covid 19 di Dunia",
         "positive": "Total Positif",
