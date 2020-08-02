@@ -25,7 +25,7 @@ const DataNewsIndonesia = {
     try {
       const config = {
         method: 'get',
-        url: `${Endpoint.API_GET_NEWS_INDONESIA}`,
+        url: `https://cors-anywhere.herokuapp.com/${Endpoint.API_GET_NEWS_INDONESIA}`,
         headers: {
           'Access-Control-Allow-Origin': '*',
         },
