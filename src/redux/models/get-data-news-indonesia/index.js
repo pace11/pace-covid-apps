@@ -27,8 +27,7 @@ const DataNewsIndonesia = {
         method: 'get',
         url: `https://cors-anywhere.herokuapp.com/${Endpoint.API_GET_NEWS_INDONESIA}`,
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'X-Requested-With',
+          'Access-Control-Allow-Origin': `${Endpoint.API_GET_NEWS_INDONESIA}`,
         },
       }
       let response = await Axios(config)
