@@ -7,14 +7,13 @@ import EditForm from './edit-form'
 
 export default function Home() {
   const { id } = useParams()
-
   return (
     <ProductProvider>
       <Section
         title={truncated(`Product/Edit/${id}`, 60)}
         column="1fr"
       >
-        <EditForm />
+        <EditForm id={id} />
       </Section>
     </ProductProvider>
   )

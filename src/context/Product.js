@@ -15,10 +15,17 @@ export const ProductProvider = (props) => {
       async function fetchDataProduct() {
         await GetProductById(productId)
           .then((res) => {
-            setProduct({
-              data: res,
-              isLoading: false,
-            })
+            if (res === undefined) {
+              setProduct({
+                data: res,
+                isLoading: true,
+              })
+            } else {
+              setProduct({
+                data: res,
+                isLoading: false,
+              })
+            }
           })
           .catch((err) => {
             setProduct({

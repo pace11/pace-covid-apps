@@ -1,5 +1,8 @@
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 // Layout
 import Layout from './uikit/common/layout'
+import { isLoggedIn } from './utils'
 
 // pages
 import HomePage from './pages/home'
@@ -30,7 +33,9 @@ const Routes = [
     path: '/login',
     exact: true,
     layout: Layout,
+    isLoggedIn: isLoggedIn(),
     component: LoginPage,
+    redirectComponent: () => <Redirect to="/" />,
   },
 ]
 

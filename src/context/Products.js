@@ -13,10 +13,17 @@ export const ProductsProvider = (props) => {
     async function fetchDataProducts() {
       await GetProducts()
         .then((res) => {
-          setProducts({
-            data: res,
-            isLoading: false,
-          })
+          if (res === undefined) {
+            setProducts({
+              data: res,
+              isLoading: true,
+            })
+          } else {
+            setProducts({
+              data: res,
+              isLoading: false,
+            })
+          }
         })
         .catch((err) => {
           setProducts({

@@ -27,6 +27,15 @@ const StyledInput = styled.input`
   }
 `
 
+/**
+ *
+ * @param {String} props.placeholder
+ * @param {String, Number <any>} props.value
+ * @param {Function} props.onChange
+ * @param {String} props.type
+ * @param {String} props.margin
+ * @param {String} props.warning
+ */
 export default function Input({
   placeholder,
   value,

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Theme from '../../common/theme'
+import theme from '../../common/theme'
 
 const Container = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ const RowTitle = styled.div`
   span {
     a {
       text-decoration: none;
-      color: ${Theme.colors.red};
+      color: ${theme.colors.red};
     }
     a:hover {
       text-decoration: underline;
@@ -32,15 +32,15 @@ const RowContent = styled.div`
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: ${(props) => props.column || '1fr 1fr'};
+  grid-template-columns: ${(props) => props.column};
   grid-gap: 10px;
 `
 
 /**
  *
- * @param {String <any>} props.children
  * @param {String} props.title
- * @param {String} props.linkTo
+ * @param {String <any>} props.children
+ * @param {Number} props.column
  */
 export default function Section({ title, children, column }) {
   return (
@@ -51,4 +51,8 @@ export default function Section({ title, children, column }) {
       <RowContent column={column}>{children}</RowContent>
     </Container>
   )
+}
+
+Section.defaultProps = {
+  column: '1fr 1fr',
 }

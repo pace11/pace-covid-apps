@@ -32,6 +32,11 @@ const ContainerButton = styled.button`
  *
  * @param {String, <any>} props.children
  * @param {String} props.size
+ * @param {String} props.bgColor
+ * @param {String} props.linkTo
+ * @param {Function} props.onClick
+ * @param {Boolean} props.block
+ *
  */
 export default function Button({
   children,

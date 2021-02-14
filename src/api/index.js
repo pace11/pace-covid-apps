@@ -38,6 +38,19 @@ export const DeleteProduct = async (id) => {
   }
 }
 
+export const EditProduct = async (id, params) => {
+  try {
+    const { data } = await Axios({
+      method: 'PATCH',
+      url: `${urlApi}/product/${id}`,
+      data: params,
+    })
+    return data
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
 export const PostLogin = async (params) => {
   try {
     const { data } = await Axios({

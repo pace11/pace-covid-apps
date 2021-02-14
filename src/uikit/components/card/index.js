@@ -76,6 +76,11 @@ const Detail = styled.div`
  * @param {String} props.img_url
  * @param {String} props.title
  * @param {Number} props.price
+ * @param {Number} props.qty
+ * @param {String} props.sku_no
+ * @param {String} props.description
+ * @param {Function} props.handleEdit
+ * @param {Function} props.handleDelete
  */
 export default function Card({
   linkTo,

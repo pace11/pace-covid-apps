@@ -19,7 +19,7 @@ const StyledFilterBackground = styled.div`
   height: 100%;
   position: fixed;
   background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 998;
   box-sizing: border-box;
 `
@@ -82,15 +82,8 @@ const ModalContent = styled.div`
  * @param {Function} props.onClick
  * @param {String} props.title
  * @param {String <any>} props.children
- * @param {String <any>} props.width
  */
-export default function Modal({
-  show,
-  onClick,
-  title,
-  children,
-  width,
-}) {
+export default function Modal({ show, onClick, title, children }) {
   if (!show) {
     return null
   } else {

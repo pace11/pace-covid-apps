@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { ProductContext } from '../../context/Product'
 import Card from '../../uikit/components/card'
+import Shimmer from '../../uikit/common/shimmer'
 
 export default function Product({ id, handleDelete, handleEdit }) {
   const [product, setProductId] = useContext(ProductContext)
@@ -13,7 +14,7 @@ export default function Product({ id, handleDelete, handleEdit }) {
 
   return (
     <React.Fragment>
-      {product.data && (
+      {product.data && !product.isLoading ? (
         <Card
           img_url={product.data.image_url}
           title={product.data.name}
@@ -24,6 +25,8 @@ export default function Product({ id, handleDelete, handleEdit }) {
           handleEdit={handleEdit}
           handleDelete={handleDelete}
         />
+      ) : (
+        <Shimmer number={1} />
       )}
     </React.Fragment>
   )

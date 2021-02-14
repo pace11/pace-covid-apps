@@ -50,7 +50,6 @@ export default function Home() {
         <p>Are you sure to delete product ?</p>
         <Button
           bgColor={theme.colors.red}
-          size="lg"
           onClick={() => ConfirmDelete()}
         >
           YES
