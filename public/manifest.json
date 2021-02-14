@@ -1,9 +1,9 @@
 {
-  "short_name": "Covid19 Apps",
-  "name": "Covid19 Apps Pace",
+  "short_name": "FE_TEST",
+  "name": "Frontend Test",
   "icons": [
     {
-      "src": "/images/icon-512.png",
+      "src": "/images/Logo192x192.png",
       "type": "image/png",
       "sizes": "512x512"
     }

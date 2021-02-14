@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Theme from './uikit/common/theme'
-import LogoGaruda from './assets/img/garuda-logo.png'
-import Loader from './assets/icons/Loader'
 
 const Container = styled.div`
   width: 100%;
@@ -51,10 +49,8 @@ export default function SplashScreen() {
   return (
     <Container>
       <p>COVID 19 APPS MONITORING</p>
-      <WrapperLogo>
-        <img src={LogoGaruda} alt={LogoGaruda} />
-      </WrapperLogo>
-      <Loader />
+      <WrapperLogo>Pace</WrapperLogo>
+      Loading ...
       <Copyright>
         <p>by @ryanpace11</p>
         <small>App version 1.0.0</small>

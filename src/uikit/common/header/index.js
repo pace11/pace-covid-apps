@@ -1,47 +1,54 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+import { isLoggedIn, isLoggedOut } from '../../../utils'
 import styled from 'styled-components'
 import theme from '../theme'
-import IconUS from '../../../assets/icons/Us'
-import IconID from '../../../assets/icons/Id'
-import Checkbox from '../../components/checkbox-flag'
+import Button from '../../components/button'
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 8vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: ${theme.colors.gradientRed};
+  height: 60px;
+  background: ${theme.colors.blue2};
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
   z-index: 999;
+  padding: 0 10px;
+  border-radius: 10px;
+  img {
+    cursor: pointer;
+    width: 150px;
+  }
 `
 
-/**
- *
- * @param {String <any>} props.language
- * @param {Function} props.HandleChangeLanguage
- */
-export default function Header({ language, HandleChangeLanguage }) {
+export default function Header() {
+  const history = useHistory()
+
+  const ClickTitle = () => {
+    history.push({
+      pathname: '/',
+    })
+  }
+
   return (
     <Container>
-      <Checkbox
-        value="en"
-        isSelected={language}
-        onClick={() => HandleChangeLanguage('en')}
-      >
-        <IconUS />
-      </Checkbox>
-      <Checkbox
-        value="id"
-        isSelected={language}
-        onClick={() => HandleChangeLanguage('id')}
-      >
-        <IconID />
-      </Checkbox>
+      <img
+        onClick={() => ClickTitle()}
+        src={require('../../../assets/image/jubelio.png')}
+        alt="img-logo"
+      />
+      {isLoggedIn() ? (
+        <Button
+          bgColor={theme.colors.red}
+          onClick={() => isLoggedOut()}
+        >
+          <i className="fa fa-sign-out-alt"></i> Logout
+        </Button>
+      ) : (
+        <Button bgColor={theme.colors.blue} linkTo={`/login`}>
+          <i className="fa fa-sign-in-alt"></i> Login
+        </Button>
+      )}
     </Container>
   )
 }

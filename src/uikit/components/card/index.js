@@ -1,94 +1,162 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
-import styled, { keyframes } from 'styled-components'
-import Theme from '../../common/theme'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import Button from '../../components/button'
+import theme from '../../common/theme'
+import { rupiah, truncated, isLoggedIn } from '../../../utils'
+
+const RouterLink = styled(Link)`
+  text-decoration: none;
+`
 
 const Container = styled.div`
   width: 100%;
-  height: 120px;
+  height: auto;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  position: relative;
-  background: ${Theme.colors.gradientRed};
+  border-radius: 10px;
   overflow: hidden;
-  &:after {
-    border-top: 40px solid transparent;
-    border-right: 80px solid transparent;
-    border-bottom: 40px solid transparent;
-    position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-    content: '';
-    top: 0;
-    left: 70%;
-    height: 0;
-    width: 0;
-    background: #fff;
-    opacity: 0.1;
+  background: #fff;
+`
+
+const RowImage = styled.div`
+  position: relative;
+  height: ${(props) => (props.linkTo ? '150px' : '250px')};
+  background: ${theme.colors.gray5};
+  overflow: hidden;
+  img {
+    postition: absolute;
+    width: 100%;
+    height: 100%;
   }
-  &:before {
-    border-top: 30px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 30px solid transparent;
+  div {
+    display: inline;
     position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-    content: '';
-    top: 50px;
-    left: 60%;
-    height: 0;
-    width: 0;
-    background: #fff;
-    opacity: 0.1;
+    z-index: 999;
+    right: 0;
+    button:first-child {
+      margin-right: 5px;
+    }
+    padding: 5px;
   }
 `
 
-const AnimationZoom = keyframes`
-  from {
-    transform: scale(0.5);
-  }
-  to {
-    transform: scale(1);
-  }
+const Text = styled.p`
+  font-size: ${(props) => props.fontSize || '14px'};
+  margin: 10px;
+  color: ${(props) => props.color || theme.colors.gray3};
+  ${(props) => props}
 `
 
-const Content = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  animation: ${AnimationZoom} 0.3s ease-in 0.3s forwards;
-  small {
-    color: ${Theme.colors.white};
-    text-transform: uppercase;
+const Detail = styled.div`
+  margin: 10px;
+  div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    span:first-child {
+      color: ${theme.colors.blue};
+    }
+    span:last-child {
+      color: ${theme.colors.gray3};
+    }
   }
-  small:not(:first-child) {
-    color: ${Theme.colors.white};
-    text-transform: uppercase;
-    font-size: 10px;
+  div:nth-child(odd) {
+    background: ${theme.colors.white2};
   }
-  p {
-    margin: 5px 0;
-    font-size: 25px;
-    font-weight: bold;
-    color: ${Theme.colors.white};
+  div:nth-child(3) {
+    flex-direction: column;
   }
 `
 
 /**
  *
+ * @param {String} props.linkTo
+ * @param {String} props.img_url
  * @param {String} props.title
- * @param {String <any>} props.number
+ * @param {Number} props.price
  */
-export default function Card({ title, number }) {
-  const { t } = useTranslation()
-
+export default function Card({
+  linkTo,
+  img_url,
+  title,
+  price,
+  qty,
+  sku_no,
+  description,
+  handleEdit,
+  handleDelete,
+}) {
+  if (!linkTo) {
+    return (
+      <Container>
+        <RowImage>
+          <img
+            src={img_url}
+            alt="img-product"
+            onError={(e) => {
+              e.target.src = 'https://via.placeholder.com/300'
+            }}
+          />
+        </RowImage>
+        <Text>{title}</Text>
+        <Text color={theme.colors.blue} fontWeight="bold">
+          {rupiah(price)}
+        </Text>
+        <Detail>
+          <div>
+            <span>Sku Number</span>
+            <span>{sku_no ? sku_no : '-'}</span>
+          </div>
+          <div>
+            <span>Quantity</span>
+            <span>{qty ? qty + ' pcs' : '-'}</span>
+          </div>
+          <div>
+            <span>Description</span>
+            <span
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></span>
+          </div>
+          {isLoggedIn() && (
+            <div>
+              <Button onClick={() => handleEdit()}>
+                <i className="fa fa-edit"></i> Edit
+              </Button>
+              <Button
+                bgColor={theme.colors.red}
+                onClick={() => handleDelete()}
+              >
+                <i className="fa fa-trash"></i> Delete
+              </Button>
+            </div>
+          )}
+        </Detail>
+      </Container>
+    )
+  }
   return (
-    <Container>
-      <Content>
-        <small>{title}</small>
-        <p>{number}</p>
-        <small>{t('home.person')}</small>
-      </Content>
-    </Container>
+    <RouterLink to={`${linkTo}`}>
+      <Container>
+        <RowImage linkTo={linkTo}>
+          <img
+            src={img_url}
+            alt="img-product"
+            onError={(e) => {
+              e.target.src = 'https://via.placeholder.com/300'
+            }}
+          />
+        </RowImage>
+        <Text>{truncated(title, 40)}</Text>
+        <Text color={theme.colors.blue} fontWeight="bold">
+          {rupiah(price)}
+        </Text>
+      </Container>
+    </RouterLink>
   )
+}
+
+Card.defaultProps = {
+  title: 'Title Card',
 }

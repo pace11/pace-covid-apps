@@ -1,8 +1,6 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import Theme from '../../common/theme'
-import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   width: 100%;
@@ -33,6 +31,9 @@ const RowTitle = styled.div`
 const RowContent = styled.div`
   width: 100%;
   height: auto;
+  display: grid;
+  grid-template-columns: ${(props) => props.column || '1fr 1fr'};
+  grid-gap: 10px;
 `
 
 /**
@@ -41,20 +42,13 @@ const RowContent = styled.div`
  * @param {String} props.title
  * @param {String} props.linkTo
  */
-export default function Section({ title, linkTo, children }) {
-  const { t } = useTranslation()
-
+export default function Section({ title, children, column }) {
   return (
     <Container>
       <RowTitle>
-        <h3>{title}</h3>
-        {linkTo && (
-          <span>
-            <Link to={`${linkTo}`}>{t('home.see_all')}</Link>
-          </span>
-        )}
+        <h4>{title}</h4>
       </RowTitle>
-      <RowContent>{children}</RowContent>
+      <RowContent column={column}>{children}</RowContent>
     </Container>
   )
 }

@@ -1,24 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import { StoreProvider } from 'easy-peasy'
-import store from './redux/store'
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import WrapperBody from './Styled-Body'
-import SplashScreen from './splash-screen'
-import RouterWeb from './router.web'
+import routes from './routes'
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = React.useState(false)
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading((loading) => !loading)
-    }, 3000)
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading((loading) => !loading)
+  //   }, 3000)
+  // }, [])
 
   return (
     <WrapperBody>
-      <StoreProvider store={store}>
-        {loading ? <SplashScreen /> : <RouterWeb />}
-      </StoreProvider>
+      <Router>
+        {routes.map((route, idx) => (
+          <Route
+            key={String(idx)}
+            path={route.path}
+            exact={route.exact}
+            component={(props) => (
+              <route.layout {...props}>
+                <route.component {...props} />
+              </route.layout>
+            )}
+          />
+        ))}
+      </Router>
     </WrapperBody>
   )
 }
